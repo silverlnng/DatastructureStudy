@@ -1,6 +1,4 @@
-﻿// DoubleLinkedList_Project.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
-//
-
+﻿
 #include <iostream>
 #include "DoubleLinkedList_Project.h"
 
@@ -9,6 +7,9 @@
 Node* DLL_CreateNode(ElementType NewData) // 노드를 생성하는 함수
 {
     Node* NewNode = (Node*)malloc(sizeof(Node));
+    //c++에서는 malloc 대신 new 사용 권장
+    //malloc : 메모리 할당
+    //new : 메모리 할당 + 객체할당
 
     NewNode->Data = NewData;
     NewNode->PrevNode = NULL;
@@ -16,6 +17,12 @@ Node* DLL_CreateNode(ElementType NewData) // 노드를 생성하는 함수
     
     return NewNode;
 }
+
+void DLL_DestroyNode(Node* Node)
+{
+    free(Node);
+}
+
 
 void DLL_AppendNode(Node** Head, Node* NewNode)
 {
@@ -39,6 +46,23 @@ void DLL_AppendNode(Node** Head, Node* NewNode)
 
         NewNode->PrevNode = Tail; // 연결을 2번씩
     }
+}
+
+void DLL_InsertAfter(Node* Current, Node* NewNode)
+{
+    //InsertAfter : Current 뒤에 새로운노드를 삽입하는것
+
+    //NewNode (새로운 노드에게 ) 앞, 뒤 연결점을 기존노드와 연결 
+    NewNode->NextNode = Current->NextNode;
+    NewNode->PrevNode = Current;
+
+    if (Current->NextNode != NULL)
+    {
+        Current->NextNode->PrevNode = NewNode;
+        Current->NextNode = NewNode;
+        //기존 노드 들을 새로운 노드와 연결
+    }
+
 }
 
 void DLL_RemoveNode(Node** Head, Node* Remove)
@@ -74,11 +98,41 @@ void DLL_RemoveNode(Node** Head, Node* Remove)
     
 }
 
-
-int main()
+Node* DLL_GetNodeAt(Node* Head, int Location)
 {
-    std::cout << "Hello World!\n";
+    //노드를 탐색하는 함수
+    Node* Current = Head;
+
+    while (Current != NULL && (--Location) >= 0)
+    {
+        //헤드를 기준으로 Location 숫자를 줄여가면서 다음노드로 탐색
+        Current = Current->NextNode;
+    }
+
+    return Current;
 }
+
+
+int DLL_GetNodeCount(Node* Head)
+{ //노드 수 세기
+    int count = 0;
+    Node* Current = Head;
+
+    while (Current!=NULL)
+    {
+        //헤드부터 수를 세기 
+        //마지막 tail은 NextNode 가없어서 current=null이 되고 반복문 탈출
+        Current = Current->NextNode;
+        count++;
+
+        if (Current == Head)
+            break;
+    }
+
+    return count;
+}
+
+
 
 // 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
 // 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
