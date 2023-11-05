@@ -6,7 +6,8 @@ typedef struct tagNode
     ElementType Data;
     struct tagNode* PrevNode;
     struct tagNode* NextNode;
-} Node;     //별명을 선언
+} Node;   
+//typedef을 이용해서 타입이름 (struct tagNode)의 별명을 Node로 선언
 
 
 // 함수 원형을 선언

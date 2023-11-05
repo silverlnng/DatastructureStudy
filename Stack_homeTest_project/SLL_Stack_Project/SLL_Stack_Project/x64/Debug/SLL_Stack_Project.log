@@ -1,0 +1,4 @@
+﻿  SLL_Stack_Project.cpp
+D:\DataStructureProject\Stack_homeTest_project\SLL_Stack_Project\SLL_Stack_Project\SLL_Stack_Project.cpp(26,21): warning C4101: 'k' :참조되지 않은 지역 변수입니다.
+D:\DataStructureProject\Stack_homeTest_project\SLL_Stack_Project\SLL_Stack_Project\SLL_Stack_Project.cpp(27,8): warning C4101: 'findNode' :참조되지 않은 지역 변수입니다.
+  SLL_Stack_Project.vcxproj -> D:\DataStructureProject\Stack_homeTest_project\SLL_Stack_Project\x64\Debug\SLL_Stack_Project.exe
