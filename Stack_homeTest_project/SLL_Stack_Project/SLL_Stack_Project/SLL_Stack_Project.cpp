@@ -30,12 +30,12 @@ int main()
 		system("cls");
 		printf("\n\n  *** 단일 연결 리스트(Singly Linked List) ***\n\n");
 		printf("=====================================\n");
-		printf(" 2. 맨 뒤 삽입\n");
+		printf(" 1. 맨 뒤 삽입=Push\n");
 		printf("=====================================\n");
-		printf(" 6. 마지막 노드 제거\n");
+		printf(" 2. 마지막 노드 제거=Pop\n");
 		printf("=====================================\n");
-		printf("10. 단일 연결 리스트 출력(노드 순회)\n");
-		printf("11. 노드의 개수 구하기\n");
+		printf("3. 단일 연결 리스트 출력(노드 순회)\n");
+		printf("4. 노드의 개수 구하기\n");
 		printf(" 0. 프로그램 종료\n");
 		printf("=====================================\n");
 		printf("\n메뉴 선택 : ");
@@ -44,17 +44,17 @@ int main()
 
 		switch (choice)
 		{
-		case 2:
+		case 1:
 			value = inputInteger(); //정수 입력 함수 호출
 			insertNodeTail(value); //맨 뒤에 노드를 추가하는 함수
 			break;		
-		case 6:
+		case 2:
 			removeNodeTail();
 			break;		
-		case 10:
+		case 3:
 			displayNode();
 			break;
-		case 11:
+		case 4:
 			//getNodeCount함수 : 노드의 개수를 구해 리턴하는 함수
 			printf("\n\n\t\t생성된 노드의 개수는  %d개 입니다.\n", getNodeCount());
 			break;		
@@ -71,16 +71,7 @@ int main()
 	return 0;
 }
 
-// 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
-// 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
 
-// 시작을 위한 팁: 
-//   1. [솔루션 탐색기] 창을 사용하여 파일을 추가/관리합니다.
-//   2. [팀 탐색기] 창을 사용하여 소스 제어에 연결합니다.
-//   3. [출력] 창을 사용하여 빌드 출력 및 기타 메시지를 확인합니다.
-//   4. [오류 목록] 창을 사용하여 오류를 봅니다.
-//   5. [프로젝트] > [새 항목 추가]로 이동하여 새 코드 파일을 만들거나, [프로젝트] > [기존 항목 추가]로 이동하여 기존 코드 파일을 프로젝트에 추가합니다.
-//   6. 나중에 이 프로젝트를 다시 열려면 [파일] > [열기] > [프로젝트]로 이동하고 .sln 파일을 선택합니다.
 
 void insertNodeTail(int data) //O(N)//스택에서 push는 tail 맨뒤에 하나씩 붙여주고 이게 top이 된다
 {
@@ -176,7 +167,7 @@ void displayNode() //O(N) : 노드의 개수만큼 반복 : 순회 코드는 무
 
 int inputInteger()
 {
-	int value;
+	int value;  
 	printf("\n삽입 할 정수 입력 : ");
 	scanf_s("%d", &value);
 	while (getchar() != '\n');
@@ -234,7 +225,7 @@ void removeNodeAll()
 		//첫노드 제거
 		delNode = head;
 		head = head->next;
-		free(delNode);
+		delete delNode;
 	}
 	printf("\n\n\t\t모든 노드를 제거했습니다.\n");
 }
