@@ -40,7 +40,7 @@ int main()
 		printf("=====================================\n");
 		printf("\n메뉴 선택 : ");
 		scanf_s("%d", &choice);
-		while (getchar() != '\n');
+		while (getchar() != '\n');		//엔터 (\n= 개행문자) 칠때까지 대기  
 
 		switch (choice)
 		{
