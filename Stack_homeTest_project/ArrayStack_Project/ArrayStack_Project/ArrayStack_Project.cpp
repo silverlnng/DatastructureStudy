@@ -77,6 +77,7 @@ void push(stack* p, int element)
 		return;
 	}
 	p->arr[++(p->top)] = element;
+	//top++;
 }
 
 void displayStack(stack* p)
@@ -94,6 +95,37 @@ void clearStack(stack* p)
 }
 
 int pop(stack* p)
+{
+	if (p->top == -1) //underflow
+	{
+		return -1;
+	}
+	//물리적인 삭제가 아니다. 논리적인 삭제
+	//(p->top)--;
+	return p->arr[(p->top)--];
+}
+
+//이런 구조의 배열 기반 스택의 단점 중 하나는 용량을 조절하기가 어렵다는 것입니다. 하지만 불가능한 것은
+//아니지요.자, 이제 문제입니다.다음의 Push() 함수를 스택의 용량이 모두 소진되었을 때 현재 용량의
+//30 % 만큼을 더 늘리도록 개선하세요.
+void push_fixCapacity (stack* p, int element)
+{
+	if (p->top == MAX_SIZE - 1)
+	{
+		printf("\n\n\t\tstack overflow\n");
+		MAX_SIZE * 1.3;
+		return;
+	}
+	p->arr[++(p->top)] = element;
+}
+
+
+//만약 배열 기반 스택 예제 프로그램의 Push() 함수만 용량이 늘어나도록 수정
+//한다면 스택은 커지기만 하고 줄어들지는 않아 결국에는 메모리를 낭비하는 결과를 만들게 됩니다.따라서 
+//Pop() 함수도 실제 사용량이 줄어들면 용량을 줄이도록 개선해야 합니다.이번 문제는 다음의 Pop() 함수를
+//사용량이스택용량의70% 미만으로 내려가면 용량을 줄이도록수정하는것입니다.
+
+int pop_fixCapacity(stack* p)
 {
 	if (p->top == -1) //underflow
 	{
