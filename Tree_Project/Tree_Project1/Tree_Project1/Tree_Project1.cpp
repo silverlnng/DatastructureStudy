@@ -1,20 +1,111 @@
-﻿// Tree_Project1.cpp : 이 파일에는 'main' 함수가 포함됩니다. 거기서 프로그램 실행이 시작되고 종료됩니다.
-//
+﻿#include <stdio.h>
+#include <stdlib.h>
 
-#include <iostream>
+#pragma warning (disable : 4996)
+
+#define ARR_SIZE 10
+
+typedef struct treeNode
+{
+	int value;
+	struct treeNode* left;
+	struct treeNode* right;
+}treeNode;
+
+treeNode* setBinTree(int* arr, int parentIdx, int maxSize);
+void displayTreeInorder(treeNode* t);
+void displayTreePreorder(treeNode* t);
+void displayTreePostorder(treeNode* t);
+treeNode* memoryFree(treeNode* t);
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	int arr[ARR_SIZE] = { 6, 4, 8, 2, 5, 7, 9, 1, 3, 10 };
+	treeNode* root = NULL;
+
+	//배열을 complete이진트리 구조로 설정
+	//트리구조를 만든 후, 루트의 주소를 리턴
+	root = setBinTree(arr, 0, ARR_SIZE); //배열이름, 루트의인덱스, 배열의크기
+
+	printf("중위순회(Inorder) : ");
+	displayTreeInorder(root);
+
+	printf("\n전위순회(Preorder) : ");
+	displayTreePreorder(root);
+
+	printf("\n후위순회(Preorder) : ");
+	displayTreePostorder(root);
+
+	printf("\n동적으로 할당 된 메모리 제거\n");
+	root = memoryFree(root);
+
+	return 0;
 }
 
-// 프로그램 실행: <Ctrl+F5> 또는 [디버그] > [디버깅하지 않고 시작] 메뉴
-// 프로그램 디버그: <F5> 키 또는 [디버그] > [디버깅 시작] 메뉴
+treeNode* setBinTree(int* arr, int parentIdx, int maxSize)
+{
+	int leftIdx = 2 * parentIdx + 1;
+	int rightIdx = leftIdx + 1;
+	treeNode* newNode;
+	newNode = (treeNode*)malloc(sizeof(treeNode));
+	newNode->value = arr[parentIdx];
+	newNode->left = NULL;
+	newNode->right = NULL;
 
-// 시작을 위한 팁: 
-//   1. [솔루션 탐색기] 창을 사용하여 파일을 추가/관리합니다.
-//   2. [팀 탐색기] 창을 사용하여 소스 제어에 연결합니다.
-//   3. [출력] 창을 사용하여 빌드 출력 및 기타 메시지를 확인합니다.
-//   4. [오류 목록] 창을 사용하여 오류를 봅니다.
-//   5. [프로젝트] > [새 항목 추가]로 이동하여 새 코드 파일을 만들거나, [프로젝트] > [기존 항목 추가]로 이동하여 기존 코드 파일을 프로젝트에 추가합니다.
-//   6. 나중에 이 프로젝트를 다시 열려면 [파일] > [열기] > [프로젝트]로 이동하고 .sln 파일을 선택합니다.
+	if (leftIdx < maxSize) //재귀호출의 종료조건
+	{
+		newNode->left = setBinTree(arr, leftIdx, maxSize); //왼쪽 자식 노드를 만들기 위해 재귀호출
+	}
+	if (rightIdx < maxSize) //재귀호출의 종료조건
+	{
+		newNode->right = setBinTree(arr, rightIdx, maxSize); //오른쪽 자식 노드를 만들기 위해 재귀호출
+	}
+
+	return newNode;
+}
+
+void displayTreeInorder(treeNode* t)
+{
+	//중위순회
+	if (t != NULL)
+	{
+		displayTreeInorder(t->left); //왼쪽 노드의 주소로 재귀호출
+		printf("%d ", t->value);
+		displayTreeInorder(t->right); //오른쪽 노드의 주소로 재귀호출
+	}
+}
+
+void displayTreePreorder(treeNode* t)
+{
+	//전위순회
+	if (t != NULL)
+	{
+		printf("%d ", t->value);
+		displayTreePreorder(t->left); //왼쪽 노드의 주소로 재귀호출		
+		displayTreePreorder(t->right); //오른쪽 노드의 주소로 재귀호출
+	}
+}
+
+void displayTreePostorder(treeNode* t)
+{
+	//후위순회
+	if (t != NULL)
+	{
+		displayTreePostorder(t->left); //왼쪽 노드의 주소로 재귀호출		
+		displayTreePostorder(t->right); //오른쪽 노드의 주소로 재귀호출
+		printf("%d ", t->value);
+	}
+}
+
+treeNode* memoryFree(treeNode* t)
+{
+	//후위순회로 제거
+	if (t != NULL)
+	{
+		memoryFree(t->left);
+		memoryFree(t->right);
+		printf("%d제거\n", t->value);
+		free(t);
+	}
+	return NULL;
+}
