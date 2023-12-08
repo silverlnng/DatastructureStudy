@@ -21,7 +21,7 @@
     <ClCompile Include="Binary_Tree.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="1035test.cpp">
+    <ClCompile Include="1935test.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
