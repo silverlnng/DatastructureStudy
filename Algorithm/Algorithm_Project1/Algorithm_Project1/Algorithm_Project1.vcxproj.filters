@@ -36,6 +36,12 @@
     <ClCompile Include="PriorityQueue.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="17219.cpp">
+      <Filter>소스 파일\NewFilter1</Filter>
+    </ClCompile>
+    <ClCompile Include="2606.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PriorityQueue.h">
