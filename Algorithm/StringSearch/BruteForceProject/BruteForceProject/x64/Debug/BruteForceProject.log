@@ -1,0 +1,6 @@
+﻿  BruteForce.cpp
+  Test_BruteForce.cpp
+D:\DatastructureStudy\Algorithm\StringSearch\BruteForceProject\BruteForceProject\Test_BruteForce.cpp(26,34): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\DatastructureStudy\Algorithm\StringSearch\BruteForceProject\BruteForceProject\Test_BruteForce.cpp(37,67): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+D:\DatastructureStudy\Algorithm\StringSearch\BruteForceProject\BruteForceProject\Test_BruteForce.cpp(28,15): error C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  코드를 생성하고 있습니다...
