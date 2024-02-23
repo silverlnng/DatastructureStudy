@@ -1,0 +1,6 @@
+﻿  KarpRabin.cpp
+D:\DatastructureStudy\Algorithm\StringSearch\Rabin-Karp Algorithm\Rabin-Karp Algorithm\KarpRabin.cpp(9,21): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  Test_KarpRabin.cpp
+D:\DatastructureStudy\Algorithm\StringSearch\Rabin-Karp Algorithm\Rabin-Karp Algorithm\Test_KarpRabin.cpp(15,75): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+  Rabin-Karp Algorithm.vcxproj -> D:\DatastructureStudy\Algorithm\StringSearch\Rabin-Karp Algorithm\x64\Debug\Rabin-Karp Algorithm.exe
